@@ -21,8 +21,8 @@ function db(): PDO
     $host = env('DB_HOST', 'localhost');
     $port = env('DB_PORT', '3306');
     $name = env('DB_NAME', 'reservease');
-    $user = env('DB_USER', 'root');
-    $pass = env('DB_PASS', '');
+    $user = env('DB_USER', 'admin');
+    $pass = env('DB_PASS', 'password');
 
     if (!$host || !$name || !$user) {
         throw new RuntimeException(
