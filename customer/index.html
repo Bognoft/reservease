@@ -1,0 +1,311 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1"
+    >
+
+    <title>ReservEase</title>
+
+    <link
+        rel="stylesheet"
+        href="../assets/style.css"
+    >
+</head>
+
+<body>
+
+    <header class="top">
+
+        <div class="brand">
+            Reserve<span>Ease</span>
+        </div>
+
+        <a
+            class="btn ghost"
+            href="../admin/"
+        >
+            Admin
+        </a>
+
+    </header>
+
+
+    <main class="wrap">
+
+        <section class="hero">
+
+            <span class="eyebrow">
+                Table reservations
+            </span>
+
+            <h1>
+                Reserve your table before you arrive.
+            </h1>
+
+            <p>
+                Choose a table, enter your details,
+                and receive a reservation code.
+            </p>
+
+        </section>
+
+
+        <section class="card">
+
+            <div
+                class="grid"
+                style="grid-template-columns:1fr 1fr"
+            >
+
+                <div>
+
+                    <div class="field">
+
+                        <label>
+                            Name
+                        </label>
+
+                        <input
+                            id="name"
+                            placeholder="Juan Dela Cruz"
+                        >
+
+                    </div>
+
+
+                    <div class="field">
+
+                        <label>
+                            Mobile number
+                        </label>
+
+                        <input
+                            id="phone"
+                            placeholder="09XXXXXXXXX"
+                        >
+
+                    </div>
+
+
+                    <div class="field">
+
+                        <label>
+                            Date
+                        </label>
+
+                        <input
+                            id="date"
+                            type="date"
+                        >
+
+                    </div>
+
+
+                    <div class="field">
+
+                        <label>
+                            Time slot
+                        </label>
+
+                        <select id="time">
+
+                            <option>
+                                11:00 AM – 1:00 PM
+                            </option>
+
+                            <option>
+                                1:00 PM – 3:00 PM
+                            </option>
+
+                            <option>
+                                6:00 PM – 8:00 PM
+                            </option>
+
+                            <option>
+                                8:00 PM – 10:00 PM
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="field">
+
+                        <label>
+                            Guests
+                        </label>
+
+                        <input
+                            id="party"
+                            type="number"
+                            min="1"
+                            max="12"
+                            value="2"
+                        >
+
+                    </div>
+
+
+                    <div class="field">
+
+                        <label>
+                            Payment method
+                        </label>
+
+                        <select id="payment">
+
+                            <option>
+                                GCash
+                            </option>
+
+                            <option>
+                                Card
+                            </option>
+
+                            <option>
+                                QR Ph
+                            </option>
+
+                            <option>
+                                Maya
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <button
+                        class="btn primary"
+                        onclick="reserve()"
+                    >
+                        Reserve selected table
+                    </button>
+
+
+                    <div id="msg"></div>
+
+
+                    <hr
+                        style="
+                            border-color:#34463b;
+                            margin:24px 0
+                        "
+                    >
+
+
+                    <h3>
+                        Join the waitlist
+                    </h3>
+
+                    <p class="muted">
+                        If no suitable table is open,
+                        submit your details and staff
+                        can seat you when one becomes
+                        available.
+                    </p>
+
+
+                    <div class="field">
+
+                        <label>
+                            Waitlist note
+                        </label>
+
+                        <input
+                            id="note"
+                            placeholder="Birthday, near buffet, etc."
+                        >
+
+                    </div>
+
+
+                    <button
+                        class="btn ghost"
+                        onclick="joinWaitlist()"
+                    >
+                        Join waitlist
+                    </button>
+
+
+                    <div id="waitMsg"></div>
+
+                </div>
+
+
+                <div>
+
+                    <h3>
+                        Choose a table
+                    </h3>
+
+
+                    <div class="legend">
+
+                        <span>
+
+                            <i
+                                class="dot"
+                                style="background:#75c69a"
+                            ></i>
+
+                            Available
+
+                        </span>
+
+
+                        <span>
+
+                            <i
+                                class="dot"
+                                style="background:#e3a857"
+                            ></i>
+
+                            Reserved
+
+                        </span>
+
+
+                        <span>
+
+                            <i
+                                class="dot"
+                                style="background:#79aee8"
+                            ></i>
+
+                            Occupied
+
+                        </span>
+
+                    </div>
+
+
+                    <div class="floor">
+
+                        <svg
+                            id="floor"
+                            viewBox="0 0 920 540"
+                        ></svg>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <script src="app.js"></script>
+
+</body>
+
+</html>

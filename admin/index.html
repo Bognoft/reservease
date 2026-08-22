@@ -1,0 +1,341 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1"
+    >
+
+    <title>ReservEase Admin</title>
+
+    <link
+        rel="stylesheet"
+        href="../assets/style.css"
+    >
+</head>
+
+<body>
+
+    <header class="top">
+
+        <div class="brand">
+            Reserve<span>Ease</span> Admin
+        </div>
+
+        <button
+            class="btn ghost"
+            onclick="logout()"
+        >
+            Logout
+        </button>
+
+    </header>
+
+    <main class="wrap">
+
+        <section
+            id="login"
+            class="login card"
+        >
+
+            <span class="eyebrow">
+                Restricted area
+            </span>
+
+            <h2>
+                Admin login
+            </h2>
+
+            <p class="muted">
+                Only authorized staff can access
+                reservations and table controls.
+            </p>
+
+            <div class="field">
+
+                <label>
+                    Username
+                </label>
+
+                <input
+                    id="user"
+                    value="admin"
+                >
+
+            </div>
+
+            <div class="field">
+
+                <label>
+                    Password
+                </label>
+
+                <input
+                    id="pass"
+                    type="password"
+                    placeholder="Password"
+                >
+
+            </div>
+
+            <button
+                class="btn primary"
+                style="width:100%"
+                onclick="login()"
+            >
+                Sign in
+            </button>
+
+            <div id="loginMsg"></div>
+
+        </section>
+
+
+        <section
+            id="app"
+            class="hidden"
+        >
+
+            <div
+                class="row"
+                style="justify-content:space-between"
+            >
+
+                <div>
+
+                    <span class="eyebrow">
+                        Staff dashboard
+                    </span>
+
+                    <h1>
+                        Today's floor
+                    </h1>
+
+                </div>
+
+                <span
+                    id="who"
+                    class="muted"
+                ></span>
+
+            </div>
+
+
+            <div class="stats">
+
+                <div class="stat">
+
+                    <b id="total">
+                        0
+                    </b>
+
+                    <span>
+                        Tables
+                    </span>
+
+                </div>
+
+                <div class="stat">
+
+                    <b id="available">
+                        0
+                    </b>
+
+                    <span>
+                        Available
+                    </span>
+
+                </div>
+
+                <div class="stat">
+
+                    <b id="reserved">
+                        0
+                    </b>
+
+                    <span>
+                        Reserved
+                    </span>
+
+                </div>
+
+                <div class="stat">
+
+                    <b id="occupied">
+                        0
+                    </b>
+
+                    <span>
+                        Occupied
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <div class="tabs">
+
+                <button
+                    class="active"
+                    onclick="show('floor', this)"
+                >
+                    🪑 Floor
+                </button>
+
+                <button
+                    onclick="show('reservations', this)"
+                >
+                    Reservations
+                </button>
+
+                <button
+                    onclick="show('waitlist', this)"
+                >
+                    Waitlist
+                </button>
+
+            </div>
+
+
+            <div
+                id="floor"
+                class="view"
+            >
+
+                <div class="card">
+
+                    <div class="legend">
+
+                        <span>
+                            <i
+                                class="dot"
+                                style="background:#75c69a"
+                            ></i>
+                            Available
+                        </span>
+
+                        <span>
+                            <i
+                                class="dot"
+                                style="background:#e3a857"
+                            ></i>
+                            Reserved
+                        </span>
+
+                        <span>
+                            <i
+                                class="dot"
+                                style="background:#79aee8"
+                            ></i>
+                            Occupied
+                        </span>
+
+                    </div>
+
+
+                    <div class="floor">
+
+                        <svg
+                            id="adminFloor"
+                            viewBox="0 0 920 540"
+                        ></svg>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div
+                id="reservations"
+                class="view hidden"
+            >
+
+                <div class="card">
+
+                    <div class="row">
+
+                        <input
+                            class="search"
+                            id="search"
+                            placeholder="Search guest, phone, code, table"
+                            oninput="renderReservations()"
+                        >
+
+                    </div>
+
+
+                    <div
+                        style="overflow:auto;margin-top:16px"
+                    >
+
+                        <table class="data-table">
+
+                            <thead>
+
+                                <tr>
+                                    <th>Guest</th>
+                                    <th>Table</th>
+                                    <th>Guests</th>
+                                    <th>Date / Time</th>
+                                    <th>Status</th>
+                                    <th>Action</th>
+                                </tr>
+
+                            </thead>
+
+                            <tbody id="resBody"></tbody>
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div
+                id="waitlist"
+                class="view hidden"
+            >
+
+                <div class="card">
+
+                    <div style="overflow:auto">
+
+                        <table class="data-table">
+
+                            <thead>
+
+                                <tr>
+                                    <th>Guest</th>
+                                    <th>Party</th>
+                                    <th>Date / Time</th>
+                                    <th>Status</th>
+                                </tr>
+
+                            </thead>
+
+                            <tbody id="waitBody"></tbody>
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <script src="app.js"></script>
+
+</body>
+</html>
